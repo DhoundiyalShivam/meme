@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-image: linear-gradient(to right, #792397 , #9f26ca);
+    color: aliceblue;
+}
+.headerSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+.logo{
+    display: flex;
+    align-items: center;
+
+}
+.logoImg{
+    width: 20%;
+    border-radius: 50%
+}
+.heading{
+    font-size: 2rem;
+    padding: 0 1rem;
+}
+.reactProject{
+    font-size: 1.5rem;
+}
+/*Meme Css */
+.meme{
+    padding: 2rem 4rem;
+}
+form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1rem
+}
+.formInput{
+    padding: 8px;
+    border-radius: 5px;
+}
+.formbutton{
+    grid-column:1/span 2;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #792397 , #9f26ca);
+    color: #fff;
+    font-size: 1rem;
+
+}
