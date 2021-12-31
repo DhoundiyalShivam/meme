@@ -1,4 +1,5 @@
 import React from "react";
+// import SideEffect from "./Components/practice/useEffect";
 // import Box from "./Components/practice/boxes";
 // import Form from "./Components/practice/form";
 import Header from "./Components/Header";
@@ -8,7 +9,8 @@ import './index.css'
 export default function App(){
    return(
     <div className="main">
-    <Header />
+       {/* <SideEffect />  */}
+        <Header />
     <Meme />
     {/* <Practice /> */}
     {/* <Box/> */}

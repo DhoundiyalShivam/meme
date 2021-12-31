@@ -1,5 +1,4 @@
 import React from 'react';
-import memeData from '../memeData'
 export default function Meme(){
 
     const [meme,setMeme]=React.useState({
@@ -8,13 +7,27 @@ export default function Meme(){
             randomImage:"https://i.imgflip.com/1c1uej.jpg"
         
     })
+    const[allMeme,setAllMeme]=React.useState([])
+    React.useEffect(()=>{
+        fetch("https://api.imgflip.com/get_memes").then(res=>res.json()).then(data=> setAllMeme(data.data.memes))
+    },[])
+    // React.useEffect(() => {
+    //     async function getMemes() {
+    //         const res = await fetch("https://api.imgflip.com/get_memes")
+    //         const data = await res.json()
+    //         setAllMemes(data.data.memes)
+            
+    //     }
+    //     getMeme()
+    // }, [])
     function getImage(){
-        const memeArray = memeData.data.memes
-        const randonNumber = Math.floor((Math.random()* memeArray.length))
-        const url = memeArray[randonNumber].url;
+        const randonNumber = Math.floor((Math.random()* allMeme.length))
+        const url = allMeme[randonNumber].url;
         setMeme(prev=>{
             return(
                 {...prev,randomImage:url}
+                // {topText:"",bottomText:"",randomImage:url}
+
             )
         })
     }
@@ -43,3 +56,21 @@ export default function Meme(){
         </div>
     )
 }
+/**
+useEffect takes a function as its parameter. If that function
+returns something, it needs to be a cleanup function. Otherwise,
+it should return nothing. If we make it an async function, it
+automatically retuns a promise instead of a function or nothing.
+Therefore, if you want to use async operations inside of useEffect,
+you need to define the function separately inside of the callback
+function, as seen below:
+ // React.useEffect(() => {
+    //     async function getMemes() {
+    //         const res = await fetch("https://api.imgflip.com/get_memes")
+    //         const data = await res.json()
+    //         setAllMemes(data.data.memes)
+            
+    //     }
+    //     getMeme()
+    // }, [])
+*/
