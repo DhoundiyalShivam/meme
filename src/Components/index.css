@@ -51,6 +51,26 @@ form{
     font-size: 1rem;
 
 }
+.memeImgSection{
+    position: relative;
+}
 .memeImg{
-    max-width: 100%;
+    width: 100%;
+    object-fit: fill;
+    height: 500px;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+.topText,.bottomText{
+    position: absolute;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    width: 80%;
+}
+.topText{
+    top: 3%;
+}
+.bottomText{    
+    bottom: 4%;
 }

@@ -3,13 +3,11 @@ import memeData from '../memeData'
 export default function Meme(){
 
     const [meme,setMeme]=React.useState({
-            toptext:"",
-            bottomtext:"",
+            topText:"",
+            bottomText:"",
             randomImage:"https://i.imgflip.com/1c1uej.jpg"
         
     })
-    const[allMemeData,setAllMemeData]=React.useState(memeData)
-    
     function getImage(){
         const memeArray = memeData.data.memes
         const randonNumber = Math.floor((Math.random()* memeArray.length))
@@ -20,14 +18,27 @@ export default function Meme(){
             )
         })
     }
+    function handleOnChange(event){
+        const {name,value} = event.target;
+        setMeme((prevValue)=>({
+            ...prevValue,
+            [name]:value
+        }))
+
+    }
     return(
         <div className='meme'>
             <form>
-                <input type="text" placeholder='input the top text' className='formInput' />
-                <input type="text" placeholder='input the bottom text' className='formInput'/>
+                <input type="text" placeholder='input the top text' className='formInput'name="topText" value={meme.topText} onChange={handleOnChange} />
+                <input type="text" placeholder='input the bottom text' className='formInput' name="bottomText" value={meme.bottomText} onChange={handleOnChange} />
                 <input type="button" value='Get a new meme image 🐕'className='formbutton' onClick={getImage} />
             </form>
-            <img src={meme} alt={meme}className='memeImg' />
+            <div className='memeImgSection'>
+            <img src={meme.randomImage} alt={meme.randomImage}className='memeImg' />
+            <h1 className='topText'>{meme.topText}</h1>
+            <h1 className='bottomText'>{meme.bottomText}</h1>
+
+            </div>
 
         </div>
     )
